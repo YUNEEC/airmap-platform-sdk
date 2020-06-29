@@ -22,10 +22,6 @@ if ! [ -e ${output} ] ; then
     curl --output ${output} ${url} 2> /dev/null
 fi
 
-if ! [ -e ${output} ]; then
-    curl --output ${output} ${url} 2> /dev/null
-fi
-
 echo "${sha1} ${output}" | sha1sum -c - > /dev/null
 
 dir=$(tar --exclude=*/* -tf ${output} | head -1)

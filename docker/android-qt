@@ -15,9 +15,9 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/airmapd/android
 	-DANDROID_STL=c++_static \
 	-DANDROID_CPP_FEATURES="rtti exceptions" \
 	-DCMAKE_TOOLCHAIN_FILE=/tmp/android-ndk-r19c/build/cmake/android.toolchain.cmake \
-    -DAIRMAP_ENABLE_QT=ON \
-    -DQt5_DIR=/tmp/5.12.3/android_armv7/lib/cmake/Qt5 \
-    -DQtCore5_DIR=/tmp/5.12.3/android_armv7/lib/cmake/Qt5Core \
+	-DAIRMAP_ENABLE_QT=ON \
+	-DQt5_DIR=/tmp/5.12.3/android_armv7/lib/cmake/Qt5 \
+	-DQtCore5_DIR=/tmp/5.12.3/android_armv7/lib/cmake/Qt5Core \
 	..
 RUN make
 RUN make install
@@ -30,9 +30,9 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/airmapd/android
 	-DANDROID_STL=c++_static \
 	-DANDROID_CPP_FEATURES="rtti exceptions" \
 	-DCMAKE_TOOLCHAIN_FILE=/tmp/android-ndk-r19c/build/cmake/android.toolchain.cmake \
-    -DAIRMAP_ENABLE_QT=ON \
-    -DQt5_DIR=/tmp/5.12.3/android_x86/lib/cmake/Qt5 \
-    -DQtCore5_DIR=/tmp/5.12.3/android_x86/lib/cmake/Qt5Core \
+	-DAIRMAP_ENABLE_QT=ON \
+	-DQt5_DIR=/tmp/5.12.3/android_x86/lib/cmake/Qt5 \
+	-DQtCore5_DIR=/tmp/5.12.3/android_x86/lib/cmake/Qt5Core \
 	..
 RUN make
 RUN make install
