@@ -1,12 +1,16 @@
 FROM ubuntu:18.04
 
+RUN apt-get update
+RUN apt-get install -y python3.6 python3-pip
+RUN python3.6 -m pip install wget py7zr argparse
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 RUN tools/ubuntu/setup.dev.sh
 RUN tools/android/download-ndk.sh android-ndk-r19c /tmp
-RUN tools/android/download-qt.sh 5.12.3 /tmp
+RUN tools/android/download-qt.py 5.12.3 /tmp
 RUN mkdir -p build_armv7
 WORKDIR build_armv7
 RUN cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/airmapd/android/Qt.5.12/armv7 -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
