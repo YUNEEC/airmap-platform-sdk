@@ -65,3 +65,32 @@ $ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/airmapd/android/Q
 $ make
 $ make install
 ```
+
+# Airmap Platform SDK for MacOS with QT support
+
+## Setup & Dependencies
+
+- MacOS Catalina version 10.15.4
+- Clang version 11.0.3 (installed by Xcode 11.4.1)
+- Homebrew 2.4.0
+- Qt (5.12.3 or later)
+- Android NDK (r19c or later)
+
+### Devtools installation
+
+Install required packages by running following command in the toplevel of Airmap Platform SDK folder:
+
+```
+$ tools/osx/setup.sh
+```
+
+## Build Manually
+
+_git submodule update --init --recursive_
+
+```
+$ mkdir build-mac
+$ cd build-mac
+$ cmake .. -DAIRMAP_ENABLE_QT=ON -DQt5_DIR="/Applications/Qt/5.12.3/clang_64/lib/cmake/Qt5"
+$ make
+```
