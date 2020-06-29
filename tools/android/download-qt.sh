@@ -2,7 +2,7 @@
 set -ex
 
 version=$1
-outputDir=$1
+outputDir=$2
 
 case "${version}" in
     5.12.3)
@@ -26,5 +26,4 @@ echo "${sha1} ${output}" | sha1sum -c - > /dev/null
 
 dir=$(tar --exclude=*/* -tf ${output} | head -1)
 tar zxf ${output} -C $outputDir
-unzip -qq -o ${output} -d $outputDir
 echo ${outputDir}/${dir}
