@@ -1,0 +1,31 @@
+name: Build and Deploy Airmap Platform SDK
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with: 
+          submodules: recursive  
+      - name: Build Airmap Platform SDK for Android and QT 5.12.3 for x86 and armv7
+        run: docker build . --file docker/android-qt --tag airmap:qt
+      - name: Pack Libraries and Include
+        run: |
+          docker create -ti --name dummy airmap:qt bash
+          mkdir -p ./pack/android/Qt.5.12/x86/
+          mkdir -p ./pack/android/Qt.5.12/armv7/
+          docker cp dummy:/usr/airmapd/android/Qt.5.12/armv7/lib/libairmap-qt.so ./pack/android/Qt.5.12/armv7/libairmap-qt.so
+          docker cp dummy:/usr/airmapd/android/Qt.5.12/x86/lib/libairmap-qt.so ./pack/android/Qt.5.12/x86/libairmap-qt.so
+          docker cp dummy:/usr/airmapd/android/Qt.5.12/x86/include/ ./pack/include
+          docker rm -fv dummy
+          tar -czvf airmapd.tar.gz -C ./pack/ android include
+      - name: Upload Release Binaries
+        uses: skx/github-action-publish-binaries@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: 'airmapd.tar.gz'
