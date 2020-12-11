@@ -20,6 +20,11 @@ case "${version}" in
         file=android-ndk-r19c-linux-x86_64.zip
         sha1=fd94d0be6017c6acbd193eb95e09cf4b6f61b834
         ;;
+    android-ndk-r21b)
+        url=https://dl.google.com/android/repository/android-ndk-r21b-linux-x86_64.zip
+        file=android-ndk-r21b-linux-x86_64.zip
+        sha1=50250fcba479de477b45801e2699cca47f7e1267
+        ;;
     android-ndk-r21d)
         url=https://dl.google.com/android/repository/android-ndk-r21d-linux-x86_64.zip
         file=android-ndk-r21d-linux-x86_64.zip
