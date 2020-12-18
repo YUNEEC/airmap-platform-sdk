@@ -17,5 +17,5 @@ jobs:
       - uses: actions/checkout@v2
         with: 
           submodules: recursive  
-      - name: Build Airmap Platform SDK for Android and QT 5.12.10 for x86 and armv7
+      - name: Build Airmap Platform SDK for Android and QT 5.13.2 for x86 and armv7
         run: docker build . --file docker/android-qt --tag airmap:qt
